@@ -28,8 +28,8 @@ public class MimeTypeCache {
 	}
 	
 	private void checkCacheSize() {
-		if (MIME_TYPE_CACHE.keySet().size() > Config.CACHE_MIME_TYPE_MAX_SIZE.getIntValue()) {
-			int elementOrder = (int)(Math.random() * (double)Config.CACHE_MIME_TYPE_MAX_SIZE.getIntValue());
+		if (MIME_TYPE_CACHE.keySet().size() > Config.MIME_CACHE_MAX_SIZE.getIntValue()) {
+			int elementOrder = (int)(Math.random() * (double)Config.MIME_CACHE_MAX_SIZE.getIntValue());
 			Iterator<File> iter = MIME_TYPE_CACHE.keySet().iterator();
 			File remove = null;
 			for (int i = 0; i < elementOrder; i++) {

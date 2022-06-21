@@ -5,6 +5,7 @@ readonly version=0.0.1
 readonly dirSrc=$(pwd)/src
 readonly dirBin=$(pwd)/bin
 readonly dirTarget=$(pwd)/target
+readonly dirLib=$(pwd)/lib
 readonly filename=gews_${version}.jar
 readonly fileJar=${dirTarget}/${filename}
 readonly fileNative=${dirTarget}/gews
@@ -38,7 +39,8 @@ function clean {
 
 function compile {
 	echo "Compiling project."
-	javac -d bin $(find src -type f -name '*.java' | tr '\n' ' ')
+	javac -d bin -cp $(find ${dirLib} -type f | tr '\n' ':') $(find ${dirSrc} -type f -name '*.java' | tr '\n' ' ')
+
 }
 
 function package {
@@ -56,6 +58,8 @@ EOF
 
 function native {
 	echo "Creating native runnable."
+	echo "Currently not working. Need to create single JAR to make it work again."
+	exit 1
 	
 	echo "Create GraalVM docker image."
 	cat > ${fileDockerfile} <<EOF
@@ -102,7 +106,6 @@ function main {
 				clean
 				compile
 				package
-				native
 				shift
 				;;
 			-h)

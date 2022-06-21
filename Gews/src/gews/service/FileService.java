@@ -45,7 +45,7 @@ public class FileService {
 			return;
 		}
 		
-		byte[] buffer = new byte[1024];
+		byte[] buffer = new byte[4096];
 		int len;
 		try (FileInputStream in = new FileInputStream(file)) {
 			while ((len = in.read(buffer)) > 0) {

@@ -14,6 +14,9 @@ public class StandaloneWebServer {
 	public StandaloneWebServer() throws IOException {
 		server = HttpServer.create(new InetSocketAddress(Config.PORT.getIntValue()), 0);
 		
+		if (Config.SCGI_ENABLED.getBooleanValue()) {
+			server.createContext(Config.SCGI_PATH.getValue(), new ScgiHttpHandlerImpl());
+		}
 		server.createContext(Config.CONTEXT_ROOT.getValue(), new HttpHandlerImpl(Config.ROOT_DIR.getFileValue()));
 		
 		server.start();

@@ -19,6 +19,11 @@ public class Main {
 		}
 
 		Config.parseProperties(args);
+
+		if (Config.HELP.getBooleanValue()) {
+			System.out.println(Config.generateHelpFile());
+			System.exit(0);
+		}
 		
 		if (Config.GENERATE_PROPERTIES.getBooleanValue()) {
 			Config.generatePropertiesFile(Config.DEFAULT_CONFIG_FILE);

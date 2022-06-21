@@ -25,7 +25,7 @@ public enum Config {
 	SCGI_PATH("scgi.path", "/scgi", "--scgi-path", true, "\t\tPath to be forwarded to the SCGI server."),
 	SCGI_SERVER("scgi.server", "localhost", "--scgi-server", true, "\t\tHost of the SCGI server."),
 	SCGI_PORT("scgi.port", "3000", "--scgi-port", true, "\t\tPort of the SCGI server."),
-	SCGI_TYPE("scgi.type", "STANDARD", "--scgi-type", true, "\t\tSCGI type as known in JSCGI. Possible values are STANDARD or SCGI_MESSAGE_BASED."),
+	SCGI_TYPE("scgi.type", "STANDARD", "--scgi-type", true, "\t\tSCGI type as known in JSCGI. Supported values are SCGI_MESSAGE_BASED and STANDARD. Both cache in memory."),
 	;
 	
 	private static final Properties PROPS = new Properties();
